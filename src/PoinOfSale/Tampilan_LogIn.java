@@ -4,16 +4,16 @@
  */
 package PoinOfSale;
 
-/**
- *
- * @author ACER
- */
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 public class Tampilan_LogIn extends javax.swing.JFrame {
     int xx, xy;
 
-    /**
-     * Creates new form Tampilan_LogIn
-     */
+    
     public Tampilan_LogIn() {
         initComponents();
     }
@@ -33,11 +33,11 @@ public class Tampilan_LogIn extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        txt_field1 = new javax.swing.JTextField();
+        btnLogin = new javax.swing.JButton();
+        password = new javax.swing.JLabel();
+        username = new javax.swing.JLabel();
+        jPassword = new javax.swing.JPasswordField();
+        txt_username = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -46,6 +46,16 @@ public class Tampilan_LogIn extends javax.swing.JFrame {
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(700, 450));
         setSize(new java.awt.Dimension(700, 450));
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -77,16 +87,21 @@ public class Tampilan_LogIn extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Hello,");
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 0));
-        jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Login");
+        btnLogin.setBackground(new java.awt.Color(0, 153, 0));
+        btnLogin.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel5.setText("Password");
+        password.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        password.setText("Password");
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel4.setText("Username");
+        username.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        username.setText("Username");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setText("Cashier");
@@ -103,12 +118,12 @@ public class Tampilan_LogIn extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel5)
+                        .addComponent(username)
+                        .addComponent(password)
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_field1)
-                        .addComponent(jPasswordField1)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_username)
+                        .addComponent(jPassword)
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -129,15 +144,15 @@ public class Tampilan_LogIn extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(username)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_field1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
+                .addComponent(password)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnLogin)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -192,6 +207,70 @@ public class Tampilan_LogIn extends javax.swing.JFrame {
         this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel1MouseDragged
 
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseDragged
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        String user = txt_username.getText();
+        String pass = new String(jPassword.getPassword());
+        try {
+            Connection c = koneksi.Go();
+            Statement s = c.createStatement();
+            String sql = "SELECT * FROM `akun` WHERE username='"+user+"' AND password='"+pass+"';";
+            ResultSet r = s.executeQuery(sql);
+            int status = 0;
+            int id;
+            String fn, us, ps, jb = null;
+            UserProfile up = new UserProfile();
+            while (r.next()) {                 
+                id = r.getInt("id_akun");
+                fn = r.getString("fullname");
+                us = r.getString("username");
+                ps = r.getString("password");
+                jb = r.getString("jabatan");
+                up.setId_akun(id);
+                up.setFullname(fn);
+                up.setUsername(user);
+                up.setPassword(pass);
+                up.setJabatan(jb); 
+                
+                status++;
+            }
+            
+            if(status > 0){
+                //Login berhasil
+                JOptionPane.showMessageDialog(this, "Sukses Login");
+                this.setVisible(false);
+                if(jb.equals("Kasir")){
+                    this.setVisible(false); 
+                    Kasir K = new Kasir(up);
+                    K.setVisible(true); 
+                }else if(jb.equals("Admin")){
+                    this.setVisible(false); 
+                    Admin A = new Admin(up);
+                    A.setVisible(true); 
+                }else if(jb.equals("Owner")){
+                    this.setVisible(false); 
+                    Owner O = new Owner(up);
+                    O.setVisible(true); 
+                }
+            }else {
+                //login gagal
+                JOptionPane.showMessageDialog(this, "GAGAL Login\n"+"Username/Password tidak valid");
+                jPassword.requestFocus();
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "terjadi kesalahan saat mencoba login");
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -228,18 +307,18 @@ public class Tampilan_LogIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogin;
     private javax.swing.JLabel close;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPassword;
     private javax.swing.JLabel logo;
-    private javax.swing.JTextField txt_field1;
+    private javax.swing.JLabel password;
+    private javax.swing.JTextField txt_username;
+    private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
 }
