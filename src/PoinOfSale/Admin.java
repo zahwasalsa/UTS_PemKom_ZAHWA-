@@ -33,6 +33,7 @@ public class Admin extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -51,7 +52,7 @@ public class Admin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jPanel5.setBackground(new java.awt.Color(153, 255, 204));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -62,7 +63,16 @@ public class Admin extends javax.swing.JFrame {
         jLabel1.setText("Welcome");
         jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 7, -1, -1));
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 244, 71));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 4;
+        gridBagConstraints.ipadx = 19;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
+        jPanel1.add(jPanel5, gridBagConstraints);
 
         jButton1.setBackground(new java.awt.Color(255, 0, 0));
         jButton1.setText("Logout");
@@ -71,7 +81,12 @@ public class Admin extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 516, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
+        jPanel1.add(jButton1, gridBagConstraints);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,25 +96,61 @@ public class Admin extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "No", "Nama Lengkap ", "Jenis Kelamin", "Alamat", "No Handphone"
+                "No", "Nama Lengkap ", "Jenis Kelamin", "Alamat", "No Telephone"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 83, 672, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 656;
+        gridBagConstraints.ipady = 407;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 10);
+        jPanel1.add(jScrollPane1, gridBagConstraints);
 
         jButton2.setText("Hapus");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 54, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 9, 0, 0);
+        jPanel1.add(jButton2, gridBagConstraints);
 
         jButton3.setText("Edit");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(522, 54, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 8, 0, 0);
+        jPanel1.add(jButton3, gridBagConstraints);
 
         jButton4.setText("Tambah");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 54, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 191, 0, 0);
+        jPanel1.add(jButton4, gridBagConstraints);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
         jLabel2.setText(" ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 20, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = -3;
+        gridBagConstraints.ipady = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 56, 0, 0);
+        jPanel1.add(jLabel2, gridBagConstraints);
 
         jTextField1.setText("Cari data");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -107,20 +158,34 @@ public class Admin extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 14, 230, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 166;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(14, 191, 0, 0);
+        jPanel1.add(jTextField1, gridBagConstraints);
 
         jLabel3.setText("jLabel3");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 200, 0, 0);
+        jPanel1.add(jLabel3, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
         );
 
         pack();
