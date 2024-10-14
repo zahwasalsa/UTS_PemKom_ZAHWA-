@@ -103,6 +103,12 @@ public class Tampilan_LogIn extends javax.swing.JFrame {
         username.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         username.setText("Username");
 
+        txt_username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usernameActionPerformed(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setText("Cashier");
 
@@ -270,6 +276,11 @@ public class Tampilan_LogIn extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "terjadi kesalahan saat mencoba login");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usernameActionPerformed
+        // TODO add your handling code here:
+        jPassword.requestFocus();
+    }//GEN-LAST:event_txt_usernameActionPerformed
 
     /**
      * @param args the command line arguments
