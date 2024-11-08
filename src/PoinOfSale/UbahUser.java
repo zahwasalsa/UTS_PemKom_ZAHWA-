@@ -1,9 +1,11 @@
 package PoinOfSale;
 
+import java.awt.HeadlessException;
 import java.sql.Connection;
+//import java.sql.Statement;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
@@ -13,12 +15,17 @@ import javax.swing.JOptionPane;
  *
  * @author ACER
  */
-public class TambahUser extends javax.swing.JDialog {
+public class UbahUser extends javax.swing.JDialog {
 
+        private int id;
+        private String fn;
+        private String us;
+        private String ps;
+        private String jb;
     /**
      * Creates new form TambahUser
      */
-    public TambahUser(java.awt.Frame parent, boolean modal) {
+    public UbahUser(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -35,9 +42,9 @@ public class TambahUser extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btn_batal = new javax.swing.JButton();
         txtuser = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_simpan = new javax.swing.JButton();
         txtname = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -52,10 +59,10 @@ public class TambahUser extends javax.swing.JDialog {
 
         jLabel5.setText("Jabatan");
 
-        jButton2.setText("Batal");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_batal.setText("Batal");
+        btn_batal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_batalActionPerformed(evt);
             }
         });
 
@@ -65,10 +72,10 @@ public class TambahUser extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setText("Simpan");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_simpan.setText("Simpan");
+        btn_simpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_simpanActionPerformed(evt);
             }
         });
 
@@ -85,7 +92,7 @@ public class TambahUser extends javax.swing.JDialog {
         jLabel2.setText("Fullname");
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setText("Tambah User");
+        jLabel1.setText("Ubah User");
 
         cmbjabatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Owner", "Kasir" }));
         cmbjabatan.addActionListener(new java.awt.event.ActionListener() {
@@ -116,18 +123,18 @@ public class TambahUser extends javax.swing.JDialog {
                             .addComponent(txt_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton1)
+                                .addComponent(btn_simpan)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel5)
                                     .addGap(51, 51, 51)
                                     .addComponent(cmbjabatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jLabel1)
-                        .addGap(89, 89, 89)))
+                            .addComponent(btn_batal))))
                 .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(135, 135, 135))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,8 +165,8 @@ public class TambahUser extends javax.swing.JDialog {
                     .addComponent(jLabel5))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(btn_batal)
+                    .addComponent(btn_simpan))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -195,43 +202,50 @@ public class TambahUser extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_batalActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_batalActionPerformed
 
     private void txtuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtuserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtuserActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpanActionPerformed
         String name = txtname.getText();
         String user = txtuser.getText();
         String pass = new String(txt_pass.getPassword());
         String jabatan = cmbjabatan.getSelectedItem().toString();
         
         //pengecekan
-        
+        PreparedStatement PS;
         try {
             Connection K = koneksi.Go();
-            String Q = "INSERT INTO akun "
-                    + "(fullname,username,password,jabatan) "
-                    + "VALUES (?,?,?,?)";
-            PreparedStatement PS = K.prepareStatement(Q);
+            String Q = "UPDATE users "
+                    + "SET fullname=?,username=?,password=?,jabatan=? WHERE id=?";
+            PS = K.prepareStatement(Q);
             PS.setString(1, name);
             PS.setString(2, user);
             PS.setString(3, pass);
             PS.setString(4, jabatan);
+            PS.setInt(5, getId());
             PS.executeUpdate();
             
             Admin.viewData(""); 
-            JOptionPane.showMessageDialog(this, "Data berhasil disimpan");
+            JOptionPane.showMessageDialog(this, "Data berhasil diubah");
             txtname.requestFocus();
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }//GEN-LAST:event_btn_simpanActionPerformed
+    
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {                                  
+        txtname.setText(getfn()); 
+        txtuser.setText(getus());
+        txt_pass.setText(getps()); 
+        String jbx = getjb().substring(0, 1).toUpperCase() + getjb().substring(1); 
+        cmbjabatan.setSelectedItem(jbx); 
+    } 
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnameActionPerformed
@@ -239,7 +253,7 @@ public class TambahUser extends javax.swing.JDialog {
     private void cmbjabatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbjabatanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbjabatanActionPerformed
-
+   
     /**
      * @param args the command line arguments
      */
@@ -257,30 +271,14 @@ public class TambahUser extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TambahUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UbahUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TambahUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UbahUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TambahUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UbahUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TambahUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UbahUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -301,7 +299,7 @@ public class TambahUser extends javax.swing.JDialog {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TambahUser dialog = new TambahUser(new javax.swing.JFrame(), true);
+                UbahUser dialog = new UbahUser(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -314,9 +312,9 @@ public class TambahUser extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_batal;
+    private javax.swing.JButton btn_simpan;
     private javax.swing.JComboBox<String> cmbjabatan;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -328,4 +326,45 @@ public class TambahUser extends javax.swing.JDialog {
     private javax.swing.JTextField txtname;
     private javax.swing.JTextField txtuser;
     // End of variables declaration//GEN-END:variables
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getfn() {
+        return fn;
+    }
+    
+
+    public void setfn(String fn) {
+        this.fn = fn;
+    }
+
+    public String getus() {
+        return us;
+    }
+
+    public void setus(String us) {
+        this.us = us;
+    }
+
+    public String getps() {
+        return ps;
+    }
+
+    public void setps(String ps) {
+        this.ps = ps;
+    }
+
+    public String getjb() {
+        return jb;
+    }
+
+    public void setjb(String jb) {
+        this.jb = jb;
+    }
 }
+
